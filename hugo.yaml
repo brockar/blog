@@ -28,6 +28,13 @@ permalinks:
   post: /p/:slug/
   page: /:slug/
 
+frontmatter:
+  lastmod:
+    - ":git"
+    - "lastmod"
+    - ":fileModTime"
+    - "date"
+
 params:
   mainSections:
     - post
