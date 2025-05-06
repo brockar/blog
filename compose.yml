@@ -1,7 +1,8 @@
 services:
   server:
     image: hugomods/hugo:exts
-    command: server -D
+    # command: server -D
+    command: hugo server --ignoreCache
     volumes:
       - ./:/src
       - ./hugo_cache:/tmp/hugo_cache

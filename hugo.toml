@@ -1,5 +1,0 @@
-baseURL = 'http://localhost:1313/'
-# baseURL = 'https://blog.martinguz.xyz/'
-languageCode = 'en-us'
-title = 'brockar'
-theme = 'hugo-theme-stack'
