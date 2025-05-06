@@ -1,34 +1,32 @@
 ---
 title: About
-description: Hugo, the world's fastest framework for building websites
-date: '2019-02-28'
+description: Who am I, and what’s this blog about?
 aliases:
   - about-us
-  - about-hugo
   - contact
-license: CC BY-NC-ND
-lastmod: '2020-10-09'
 menu:
     main: 
         weight: -90
         params:
             icon: user
+date: 2025-05-06T14:30:00Z 
+lastmod: 2025-05-06T14:30:00Z 
+
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache License 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+Hey! I’m **Martin**. This blog is where I share my adventures with Linux, code, and 3D printing—stuff I find fun and worth documenting.
 
-Hugo makes use of a variety of open source projects including:
+### **What You’ll Find Here**  
+- 🐧 **Linux**: Configs, distro hops, and terminal tricks.  
+- 💻 **Code Snippets**: Mostly Rust, Python, and Bash—things I use daily.  
+- 🖨️ **3D Printing**: CAD designs, troubleshooting, and mods.  
+- 🔧 **Random Projects**: Whatever else I’m hacking on.  
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+### **Who Am I?**  
+I'm a Computer Engineering student who believes the best way to understand systems is to take them apart. While I don't yet have formal IT experience,
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+### **Elsewhere**  
+- <i class="fab fa-github"></i> [GitHub](https://github.com/brockar/) (Where the code lives)  
+- <i class="fas fa-file-alt"></i> [CV / Resume](https://martinguz.xyz/) (Because formalities)  
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
-
-Websites built with Hugo are extremely fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+*This blog is built with [Hugo](https://gohugo.io/) and the [Stack theme](https://stack.jimmycai.com/).*  

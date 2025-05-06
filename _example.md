@@ -1,7 +1,7 @@
 +++
 author = "Hugo Authors"
 title = "Placeholder Text"
-date = "2019-03-09"
+date = '2019-03-09'
 description = "Lorem Ipsum Dolor Si Amet"
 categories = [
     "Test",
@@ -12,7 +12,7 @@ tags = [
     "text",
     "tag with whitespaces"
 ]
-image = img.jpg"
+image = "img.jpg"
 +++
 
 ---
@@ -89,3 +89,17 @@ The [Emoji cheat sheet](http://www.emoji-cheat-sheet.com/) is a useful reference
 }
 </style>
 {{< /css.inline >}}
+
+---
+# Links
+This page's frontmatter:
+
+```yaml
+title: Links
+Author: brockar
+links:
+  - title: GitHub
+    description: GitHub is the world's largest software development platform.
+    website: https://github.com/brockar
+    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+```
