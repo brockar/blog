@@ -1,3 +1,5 @@
-baseURL = 'https://example.org/'
+baseURL = 'http://localhost:1313/'
+# baseURL = 'https://blog.martinguz.xyz/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'brockar'
+theme = 'hugo-theme-stack'
