@@ -1,4 +1,4 @@
-baseurl: http://localhost:1313/
+baseurl: https://blog.martinguz.xyz
 languageCode: en-us
 theme: hugo-theme-stack
 title: brockar's blog
