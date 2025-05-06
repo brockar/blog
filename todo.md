@@ -1,0 +1,1 @@
+- [x] put my smb post on servers 
