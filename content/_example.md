@@ -1,22 +1,59 @@
 +++
 author = "Hugo Authors"
-title = "Emoji Support"
-date = "2019-03-05"
-description = "Guide to emoji usage in Hugo"
+title = "Placeholder Text"
+date = "2019-03-09"
+description = "Lorem Ipsum Dolor Si Amet"
 categories = [
-    "Test"
+    "Test",
+    "Test with whitespaces"
 ]
 tags = [
-    "emoji",
+    "markdown",
+    "text",
+    "tag with whitespaces"
 ]
-image = "the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
+image = img.jpg"
 +++
 
-Emoji can be enabled in a Hugo project in a number of ways. 
-<!--more-->
-The [`emojify`](https://gohugo.io/functions/emojify/) function can be called directly in templates or [Inline Shortcodes](https://gohugo.io/templates/shortcode-templates/#inline-shortcodes). 
+---
 
-To enable emoji globally, set `enableEmoji` to `true` in your site's [configuration](https://gohugo.io/getting-started/configuration/) and then you can type emoji shorthand codes directly in content files; e.g.
+## YouTube Privacy Enhanced Shortcode
+
+{{< youtube ZJthWmvUzzc >}}
+
+<br>
+
+---
+
+## Twitter Simple Shortcode
+
+{{< twitter_simple user="DesignReviewed" id="1085870671291310081" >}}
+
+<br>
+
+---
+
+## Gist Shortcode
+
+{{< gist spf13 7896402 >}}
+
+## Gitlab Snippets Shortcode
+
+{{< gitlab 2349278 >}}
+
+## Quote Shortcode
+
+Stack adds a `quote` shortcode.  For example:
+
+{{< quote author="A famous person" source="The book they wrote" url="https://en.wikipedia.org/wiki/Book">}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...
+{{< /quote >}}
+
+{{< quote source="Anonymous book" url="https://en.wikipedia.org/wiki/Book">}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...
+{{< /quote >}}
+
+---
 
 <p>
 <span class="nowrap"><span class="emojify">🙈</span> <code>:see_no_evil:</code></span>
@@ -28,8 +65,6 @@ To enable emoji globally, set `enableEmoji` to `true` in your site's [configurat
 
 
 The [Emoji cheat sheet](http://www.emoji-cheat-sheet.com/) is a useful reference for emoji shorthand codes.
-
-***
 
 **N.B.** The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.
 
