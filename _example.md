@@ -113,7 +113,7 @@ website = "https://ubuntu.com/tutorials/install-and-configure-samba#4-setting-up
 image = "https://repository-images.githubusercontent.com/335476519/61ef634e-0b5f-4d27-9fb6-c64d526c595c"
 
 [[links]]
-title = "Odisea Geek"
-website = "https://odiseageek.es/posts/montar-unidades-smb-o-cifs-en-linux-con-mount-o-fstab/"
-image = "https://avatars.githubusercontent.com/u/60941836?v=4"
+title = "a"
+website = "a"
+image = "a"
 ```
