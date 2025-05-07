@@ -1,7 +1,8 @@
 +++
 author = "Hugo Authors"
 title = "Placeholder Text"
-date = '2019-03-09'
+date = '2025-05-07'
+lastmod = '2025-05-07'
 description = "Lorem Ipsum Dolor Si Amet"
 categories = [
     "Test",
