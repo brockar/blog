@@ -69,11 +69,6 @@ sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 
 (Replace `eno1` with your actual physical interface name - find it with `ip link`)
 
-### Notes
-
-- Remember to replace `$USER` with your actual username or use the environment variable as shown
-- For VMware, you may need to enable folder sharing in the VM settings first
-
 ## VMware Virtual Machines
 
 If you're using VMware and need to set up shared folders between your host and guest systems:
