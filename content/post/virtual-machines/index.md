@@ -10,7 +10,9 @@ tags = [
     "linux",
     "networking",
     "vitual-machines",
-    "vm"
+    "vm",
+    "windows"
+
 ]
 image = "qemuvirt.png"
 +++
@@ -77,13 +79,17 @@ sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 (Replace `eno1` with your actual physical interface name - find it with `ip link`)
 
 <<<<<<< HEAD
+
 ## VMware Virtual Machines
+
 =======
+
 ## Windows guest
 
 When I install Windows VM on my Linux Host, I do this:
 
 ### Prerequisites
+>>>>>>>
 >>>>>>> dev
 
 Before install Windows, you need to download VirtIO drivers, for use VirtIO disks

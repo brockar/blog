@@ -7,7 +7,7 @@ categories = [
     "Linux"
 ]
 tags = [
-    "linux", "git", "github", "ssh"
+    "linux", "git", "github", "ssh", "windows"
 ]
 image = "lg.jpg"
 
@@ -30,22 +30,28 @@ git config --global color.ui true
 ## SSH Key Setup for GitHub
 
 1. Generate a new SSH key (recommended to use Ed25519 algorithm):
+
    ```bash
    ssh-keygen -t ed25519 -C "your_email@example.com"
    ```
 
 2. Add your public key to GitHub:
    - Copy the public key to clipboard:
+
      ```bash
      xclip < ~/.ssh/id_ed25519.pub
      ```
+
    - Or display it in terminal:
+
      ```bash
      cat ~/.ssh/id_ed25519.pub
      ```
+
    - Paste it in GitHub Settings → SSH and GPG keys → New SSH key
 
 3. Test your SSH connection:
+
    ```bash
    ssh -T git@github.com
    ```
@@ -65,13 +71,16 @@ ssh-add ~/.ssh/id_ed25519
 
 ### Installation
 
-#### Linux (Debian/Ubuntu):
+#### Linux (Debian/Ubuntu)
+
 For Debian 13 (Trixie) or Ubuntu 25.10:
+
 ```bash
 sudo apt install lazygit
 ```
 
 For Debian 12 or Ubuntu 25.04:
+
 ```bash
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -111,11 +120,14 @@ Create a config file at `~/.config/lazygit/config.yml` to customize keybindings 
 ## Common Git Workflow with Lazygit
 
 1. Open lazygit in your repo:
+
    ```bash
    lazygit
    ```
+
 2. Stage changes with `s`
 3. Commit with `c`
 4. Push with `P`
 5. Create/switch branches with `b`
 6. Merge with `m`
+
