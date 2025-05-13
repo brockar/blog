@@ -10,7 +10,8 @@ tags = [
     "linux",
     "networking",
     "vitual-machines",
-    "vm"
+    "vm",
+    "windows"
 ]
 image = "qemuvirt.png"
 +++
