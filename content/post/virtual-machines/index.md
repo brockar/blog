@@ -77,6 +77,15 @@ sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 
 (Replace `eno1` with your actual physical interface name - find it with `ip link`)
 
+If bridge doesn't work, try this:
+
+```bash
+sudo ip link set eno1 down
+sudo brctl addif br0 eno1
+sudo ip link set eno1 up
+sudo ip link set br0 up
+```
+
 ## VMware Virtual Machines
 
 ## Windows guest
