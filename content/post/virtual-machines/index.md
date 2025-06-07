@@ -69,22 +69,16 @@ For create a Bridge network to share with the VM I do this on host:
 
 ```bash
 sudo pacman -S bridge-utils dnsmasq
-nmcli connection add type bridge ifname br0
+nmcli connection add type bridge ifname br0 con-name br0
 nmcli connection add type bridge-slave ifname eno1 master br0
-nmcli connection up bridge-br0
+sudo nmcli connection modify br0 bridge.stp no
+nmcli connection up br0
 sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 ```
 
 (Replace `eno1` with your actual physical interface name - find it with `ip link`)
 
-If bridge doesn't work, try this:
-
-```bash
-sudo ip link set eno1 down
-sudo brctl addif br0 eno1
-sudo ip link set eno1 up
-sudo ip link set br0 up
-```
+Add `allow br0` on `/etc/qemu/bridge.conf`
 
 ## VMware Virtual Machines
 
