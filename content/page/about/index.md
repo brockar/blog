@@ -27,6 +27,6 @@ I'm a Computer Engineering student who believes the best way to understand syste
 
 ### **Elsewhere**  
 - <i class="fab fa-github"></i> [GitHub](https://github.com/brockar/) (Where the code lives)  
-- <i class="fas fa-file-alt"></i> [CV / Resume](https://martinguz.xyz/) (Because formalities)  
+- <i class="fas fa-file-alt"></i> [CV / Resume](https://mguz.xyz/) (Because formalities)  
 
 *This blog is built with [Hugo](https://gohugo.io/) and the [Stack theme](https://stack.jimmycai.com/).*  
