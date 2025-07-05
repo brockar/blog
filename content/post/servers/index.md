@@ -277,3 +277,46 @@ This configuration:
 
 - Uses 2 CPU cores every 2 hours (`-c 2h -m 2`)
 - Performs network activity every 4 hours (`-n 4h`)
+
+## Power Optimization with powertop & AutoASPM
+
+To reduce power consumption, I use `powertop` and the `AutoASPM` script to automatically tune power settings.
+
+### Powertop
+
+```bash
+sudo apt update
+sudo apt install powertop
+```
+
+This command applies recommended power-saving settings:
+
+```bash
+sudo powertop --auto-tune
+```
+
+To run this automatically at startup, add it to root's crontab:
+
+```bash
+sudo crontab -e
+```
+Add this line at the end:
+```bash
+@reboot /usr/sbin/powertop --auto-tune
+```
+
+### AutoASPM 
+
+This is a script that enables PCIe ASPM (Active State Power Management) for better power savings.  
+See: [AutoASPM GitHub](https://github.com/notthebee/AutoASPM)
+
+**Install and run AutoASPM:**
+
+```bash
+git clone https://github.com/notthebee/AutoASPM.git
+cd AutoASPM
+sudo python3 autoasmp.py
+```
+
+> **Note:**
+> Always test power-saving settings for stability, especially on servers. Some devices may not support all ASPM states.
