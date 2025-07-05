@@ -1,1 +1,1 @@
-- [x] put my smb post on servers 
+- [ ] Self host your web / secure vps config 
