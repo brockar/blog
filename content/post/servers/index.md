@@ -108,16 +108,20 @@ fail2ban will now monitor for suspicious activity and ban offending IPs automati
 I run several services in Docker containers for easy management:
 
 - **[Homepage](https://github.com/gethomepage/homepage)**: A simple dashboard for my services
-- **VSCode Server**: Cloud-based VS Code instance for remote development
-- **Portainer**: Web UI for Docker management
-- **Uptime Kuma**: Service monitoring and uptime checker
-- **Grafana**: Metrics visualization platform (often paired with Prometheus)
-- **Calibre**: E-book management and server
-- **FreshRSS**: RSS feed aggregator
-- **Vikula**: Personal wiki and note-taking app
-- **Nextcloud**: Self-hosted cloud storage and collaboration platform
-- **Paperless**: Document management system
-- **Immich**: Self-hosted photo and video backup solution
+- **[VSCode Server](https://github.com/coder/code-server)**: Cloud-based VS Code instance for remote development
+- **[Immich](https://github.com/immich-app/immich)**: Self-hosted photo and video backup solution
+- **[Calibre](https://hub.docker.com/r/linuxserver/calibre)**: E-book management and server
+- **[FreshRSS](https://github.com/FreshRSS/FreshRSS)**: RSS feed aggregator
+- **[Vikunja](https://vikunja.io/)**: Personal wiki and note-taking app
+- **[Nextcloud](https://nextcloud.com/)**: Self-hosted cloud storage and collaboration platform
+- **[Paperless](https://github.com/paperless-ngx/paperless-ngx)**: Document management system
+- **[Portainer](https://www.portainer.io/)**: Web UI for Docker management
+- \ **[Uptime Kuma](https://github.com/louislam/uptime-kuma)**: Service monitoring and uptime checker
+- \ **[Grafana](https://grafana.com/)**: Metrics visualization platform (works with Prometheus)
+- **[Beszel](https://beszel.dev/)**: Simple, lightweight server monitoring
+
+> **Note:**  
+> For home server monitoring, I now use **Beszel** instead of Uptime Kuma or Grafana. In the past, I used those tools, but found Beszel provides simple, lightweight status checks and metrics that are sufficient for most personal setups.
 
 #### Securing Docker with userns-remap (Optional)
 
