@@ -112,6 +112,64 @@ I run several services in Docker containers for easy management:
 - **Portainer**: Web UI for Docker management
 - **Uptime Kuma**: Service monitoring and uptime checker
 - **Grafana**: Metrics visualization platform (often paired with Prometheus)
+- **Calibre**: E-book management and server
+- **FreshRSS**: RSS feed aggregator
+- **Vikula**: Personal wiki and note-taking app
+- **Nextcloud**: Self-hosted cloud storage and collaboration platform
+- **Paperless**: Document management system
+- **Immich**: Self-hosted photo and video backup solution
+
+#### Securing Docker with userns-remap (Optional)
+
+For enhanced security, you can enable Docker's user namespace remapping feature (`userns-remap`). This isolates container processes from the host by mapping container users to non-root users on the host.
+
+**How to enable userns-remap:**
+
+1. **Edit or create the Docker daemon config:**
+   ```bash
+   sudo mkdir -p /etc/docker
+   sudo nvim /etc/docker/daemon.json
+   ```
+   Add:
+   ```json
+   {
+     "userns-remap": "default"
+   }
+   ```
+
+2. **Restart Docker:**
+   ```bash
+   sudo systemctl restart docker
+   ```
+
+Docker will now run containers with remapped user IDs, reducing the risk of privilege escalation from containers to the host.
+
+> **Important:**  
+> Enabling userns-remap will make all your existing Docker images and containers inaccessible. They will not be deleted, but Docker will not see them under the new user namespace. You can revert the change to regain access, or migrate images/containers as needed.
+
+> This is optional, but highly recommended for internet-exposed servers. Some images may require adjustments to work with userns-remap.
+
+**User Namespace Known Limitations:**
+
+- The following Docker features are incompatible with user namespaces:
+  - Sharing PID or NET namespaces with the host (`--pid=host` or `--network=host`)
+  - External volume/storage drivers that do not support user mappings
+  - Using `--privileged` mode without also specifying `--userns=host`
+
+**Disabling Namespace Remapping for a Container:**
+
+If user namespaces are enabled on the daemon, all containers use them by default. To disable user namespaces for a specific container (e.g., for privileged containers), add the `--userns=host` flag to your `docker run` or `docker create` command:
+
+```bash
+docker run --userns=host ...
+```
+
+> Note: The container filesystem will still be owned by the remapped user (e.g., 231072), which may cause issues for programs expecting root ownership (like `sudo` or setuid binaries).
+
+
+> You can also check:  
+> [Docker Rootless Mode (docs.docker.com)](https://docs.docker.com/engine/security/rootless/)  
+> Running Docker in rootless mode is another way to improve security, especially in multi-user environments.
 
 ## Laptop Server Specifics
 
