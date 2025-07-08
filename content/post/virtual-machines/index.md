@@ -9,7 +9,7 @@ categories = [
 tags = [
     "linux",
     "networking",
-    "vitual-machines",
+    "virtual-machines",
     "vm",
     "windows"
 ]
@@ -30,7 +30,8 @@ with QEMU and VirtManager on Linux. It covers:
 If you're using QEMU with SPICE protocol for better integration with linux guest:
 
 ```bash
-sudo apt install open-vm-tools spice-vdagent
+sudo apt install spice-vdagent
+sudo systemctl enable --now spice-vdagentd.service
 ```
 
 This provides:
@@ -65,7 +66,7 @@ back up data first.
 
 ## Bridge network for QEMU/VirtManager
 
-For create a Bridge network to share with the VM I do this on host:
+To create a Bridge network to share with the VM I do this on host:
 
 ```bash
 sudo pacman -S bridge-utils dnsmasq
@@ -79,8 +80,6 @@ sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
 (Replace `eno1` with your actual physical interface name - find it with `ip link`)
 
 Add `allow br0` on `/etc/qemu/bridge.conf`
-
-## VMware Virtual Machines
 
 ## Windows guest
 
