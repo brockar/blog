@@ -27,12 +27,20 @@ image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqMV5jTVWkdHRNkn3
 title = "Kinetica Nvidia Docs"
 website = "https://docs.kinetica.com/7.1/install/nvidia_deb/"
 image = "https://docs.kinetica.com/7.1/images/kinetica_university_blue_web.svg"
+
+[[links]]
+title = "NVML-GPU-Control"
+website = "https://github.com/HackTestes/NVML-GPU-Control"
+image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Fgithub%2Fgithub_PNG80.png&f=1&nofb=1&ipt=b6c906ba477cf0eaf58b87eba210263c12f7074f3c39761c1eb60c0096c06c8b"
 +++
+
+> Note: I don't use NVIDIA anymore so this update will probably be the last one I make to this post. 
+
 ## Nvidia Drivers Installation
 
 First check the specific steps for your Debian version in the [official documentation](https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_Unstable_.22Sid.22).
 
-### 1. Add Required Repositories
+### Add Required Repositories
 
 Edit your `/etc/apt/sources.list` to include `contrib non-free non-free-firmware` components:
 
@@ -41,7 +49,7 @@ Edit your `/etc/apt/sources.list` to include `contrib non-free non-free-firmware
 deb http://deb.debian.org/debian/ sid main contrib non-free non-free-firmware
 ```
 
-### 2. Install Nvidia Drivers
+### Install Nvidia Drivers
 
 Update packages and install the necessary components:
 
@@ -51,7 +59,7 @@ sudo apt install linux-headers-amd64
 sudo apt install nvidia-driver firmware-misc-nonfree
 ```
 
-## Secure Boot Configuration
+### Secure Boot Configuration 
 
 If you have Secure Boot enabled, you'll need to enroll the MOK (Machine Owner Key):
 
@@ -75,27 +83,73 @@ Expected output:
 /var/lib/shim-signed/mok/MOK.der is already enrolled
 ```
 
-## Troubleshooting
+### Verify Installation
 
-### Failed to Start Nvidia Persistence Daemon
-
-If you encounter issues with the persistence daemon:
+After completing the driver installation (and rebooting if you enrolled MOK keys), verify that the Nvidia drivers are working correctly with:
 
 ```bash
-sudo apt purge nvidia-*
-sudo apt install nvidia-kernels-dkms
+nvidia-smi
 ```
 
-Then repeat the driver installation steps from the beginning.
+## NVIDIA Management
 
-## Power Management
+### Cooler management
+For managing Nvidia GPU coolers, I use [NVML-GPU-Control](https://github.com/HackTestes/NVML-GPU-Control) which is a simple Python script that allows you to control the GPU fans with a curve. 
+
+You can install it with:
+
+```bash
+sudo pipx install --global caioh-nvml-gpu-control
+```
+and then run it with:
+
+```bash
+sudo chnvml fan-control -n 'NVIDIA GeForce RTX 3070' -sp '10:35,20:50,30:50,35:100'
+```
+
+Also I put it on my crontab to run at boot:
+
+```bash
+@reboot /usr/local/bin/chnvml fan-control -n 'NVIDIA GeForce RTX 3070' -sp '10:35,20:50,30:50,35:100'
+```
+
+#### Official cooler management
+As an alternative, you can use the official Nvidia settings tool for fan control.
+It just sets the fan speed to 50% on boot, which is not ideal for cooling but works if you don't want to use a custom script.
+Add this to root's crontab (`sudo crontab -e`):
+
+```bash
+@reboot nvidia-settings -V -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=50' -a '[fan:1]/GPUTargetFanSpeed=50'
+```
 
 ### Undervolting Nvidia GPU
 
-Create a systemd service to manage power limits:
+Undervolting (reducing power consumption) your GPU can provide several benefits reducing the maximum voltage while maintaining stable performance. This can lead to:
+
+- **Lower temperatures** - Reduced power consumption means less heat generation
+- **Quieter operation** - Lower temps allow fans to run slower and quieter
+- **Extended GPU lifespan** - Cooler operation reduces thermal stress on components
+- **Energy savings** - Lower power consumption reduces electricity costs
+- **Better performance stability** - Prevents thermal throttling during heavy loads
+
+Power limiting is a simple form of undervolting that caps the maximum power draw without complex voltage adjustments.
+
+#### Using crontab (recommended)
+
+The simplest approach is using crontab. Add this to root's crontab (`sudo crontab -e`):
 
 ```bash
-sudo vim /etc/systemd/system/nvidia-powerlimit.service
+@reboot /usr/bin/nvidia-smi --persistence-mode=1 && /usr/bin/nvidia-smi --power-limit=125
+```
+
+> **Note:** Replace `125` with your desired power limit in watts. Check your GPU's maximum power limit with `nvidia-smi -q -d POWER` before setting a value.
+
+#### Using systemd service (alternative)
+
+For users who prefer systemd services, create a service to manage power limits:
+
+```bash
+sudo nvim /etc/systemd/system/nvidia-powerlimit.service
 ```
 
 Add this content:
@@ -122,16 +176,22 @@ sudo systemctl daemon-reload
 sudo systemctl enable nvidia-powerlimit.service
 ```
 
-## Thermal Management
+## GUI Controllers
 
-### Fan Control
+I can recommend these two GUI tools for managing Nvidia GPUs:
+ - [LACT](https://github.com/ilya-zlobintsev/LACT) Originally designed for AMD GPUs, but it also supports Nvidia cards now. It has GPU info, overclocking, and fan control features. You can see the hardware compatibility list [here](https://github.com/ilya-zlobintsev/LACT/wiki/Hardware-Support#nvidia).  
 
-Add this to root's crontab (`sudo crontab -e`):
+ - Also can try [TuxClocker](https://github.com/Lurkki14/tuxclocker), for almost the same functionality. I prefer LACT because it has more features and is actively developed but TuxClocker is also a good option.
+
+## Troubleshooting
+
+### Failed to Start Nvidia Persistence Daemon
+
+If you encounter issues with the persistence daemon:
 
 ```bash
-@reboot nvidia-settings -V -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=50' -a '[fan:1]/GPUTargetFanSpeed=50'
+sudo apt purge nvidia-*
+sudo apt install nvidia-kernels-dkms
 ```
 
-## Wayland Support
-
-For Wayland compatibility, consider using [TuxClocker](https://github.com/Lurkki14/tuxclocker), a Qt-based overclocking tool that works with Nvidia cards.
+Then repeat the [driver installation steps](#nvidia-drivers-installation) from the beginning.
