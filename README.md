@@ -1,6 +1,8 @@
 # Blog
 
-[blog url](https://blog.mguz.xyz)
+This is my personal tech blog, where I share notes, tutorials, and guides about Linux, virtualization, networking, and other topics. The content is written in Markdown and published using [Hugo](https://gohugo.io/) with the [Stack theme](https://stack.jimmycai.com/config/).
 
-## Theme
-<https://stack.jimmycai.com/config/>
+The blog is publicly available at: [blog.mguz.xyz](https://blog.mguz.xyz)
+
+It is hosted on [Cloudflare Pages](https://pages.cloudflare.com/), providing fast and reliable global delivery.
+
