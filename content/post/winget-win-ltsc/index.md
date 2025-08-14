@@ -33,6 +33,11 @@ title = "UI.Xaml.2.7"
 website = "https://www.nuget.org/packages/Microsoft.UI.Xaml/"
 image = "https://upload.wikimedia.org/wikipedia/commons/2/25/NuGet_project_logo.svg"
 
+[[links]]
+title = "Windows-Sandbox-Tools"
+website = "https://github.com/ThioJoe/Windows-Sandbox-Tools"
+image = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/1200px-GitHub_Invertocat_Logo.svg.png"
+
 +++
 
 
@@ -80,3 +85,20 @@ Add-AppxProvisionedPackage -Online -PackagePath "PATH TO MSIXBUNDLE" -LicensePat
 Wait for the install to finish and you're done. You may need to restart the terminal, or reboot your pc.  
 Verify that the installation succeeded by running `winget` in PowerShell.  
 If no errors occur then you're done!  
+
+## Alternative Installation Method
+
+> **Disclaimer:**  
+> I am not responsible for this script. It is created and maintained by ThioJoe. Use at your own risk.
+
+You can use a community script created by [ThioJoe](https://github.com/ThioJoe) to install winget.
+
+Open **PowerShell as Administrator** and run:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+iwr -useb "https://raw.githubusercontent.com/ThioJoe/Windows-Sandbox-Tools/main/Installer%20Scripts/Install-Winget.ps1" | iex
+```
+
+Or you can download from the [repo](https://github.com/ThioJoe/Windows-Sandbox-Tools/blob/main/Installer%20Scripts/Install-Winget.ps1) and run the script manually.
+
