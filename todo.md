@@ -1,1 +1,0 @@
-- [ ] Self host your web / secure vps config 
