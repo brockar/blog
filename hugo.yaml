@@ -1,4 +1,4 @@
-baseurl: https://blog.mguz.xyz
+baseurl: https://blog.mguz.dev
 languageCode: en-us
 theme: hugo-theme-stack
 title: brockar's blog
@@ -123,7 +123,7 @@ menu:
 
   #   - identifier: cv
   #     name: cv
-  #     url: https://martinguz.xyz/
+  #     url: https://mguz.dev/
   #     params:
   #       icon: user
 
