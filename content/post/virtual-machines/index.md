@@ -139,7 +139,7 @@ appear as the share name in Windows
 Install [WINFSP](https://winfsp.dev/rel/) driver.  
 Restart.  
 Open `Services` app.
-Find `WINFSP` and start it. Also set it to "Automatic".  
+Find `WINFSP` or `VirtIO-FS Service` and start it. Also set it to "Automatic".  
 
 The folder will appear as `HostShare` on "This PC".
 
